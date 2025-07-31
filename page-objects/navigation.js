@@ -69,9 +69,13 @@ export class Navigation {
         const auth = this.get.menu('Auth');
         await this.isMenuExpanded(auth)
         await this.get.menu('Login').click();
+        await this.get.backButton().click();
         await this.get.menu('Register').click();
+        await this.get.backButton().click();
         await this.get.menu('Request Password').click();
+        await this.get.backButton().click();
         await this.get.menu('Reset Password').click();
+        await this.get.backButton().click();
         await this.page.waitForTimeout(1000);
         await this.isMenuExpanded(auth)
     }
@@ -79,7 +83,7 @@ export class Navigation {
     // async getFeature(feature) {
     //     return this.page.locator(`[title="${feature}"]`);
     // }
-    
+
     async isMenuExpanded(locator) {
         const isExpanded = await locator.getAttribute('aria-expanded');
         if (isExpanded === 'false') {
