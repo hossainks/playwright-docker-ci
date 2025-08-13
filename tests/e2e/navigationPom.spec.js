@@ -8,7 +8,7 @@ test.beforeEach(async ({ page }) => {
 
 test('verify user is on the home page', async ({ page }) => {
     const navigation = new Navigation(page);
-    await navigation.verifyUserIsOnHomePage();
+    await navigation.verifyHomePage();
 });
 
 test('Navigate To Fixtures', async ({ page }) => {

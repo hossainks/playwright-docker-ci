@@ -1,3 +1,8 @@
 {
-   "lightStatus":".status.paragraph-2"
+  "lightStatus": ".status.paragraph-2",
+  "defaultTempareture": ".temperature-bg .temperature.h1",
+  "tempatureUnit": ".temperature-bg .desc",
+  "powerButton": ".power-bg",
+  "temperatureSlider": "circle[fill='#f7f9fc']",
+  "selectedRoom": ".selected-room .room-text"
 }

@@ -10,7 +10,7 @@ export class Navigation {
         this.lightCard = page.locator('nb-card', { hasText: 'Light' });
         this.statusIndicator = this.lightCard.locator('.status.paragraph-2');
     }
-    async verifyUserIsOnHomePage() {
+    async verifyHomePage() {
         await this.clickOnLightCard();
         expect(this.statusIndicator).toHaveText('OFF');
     }
