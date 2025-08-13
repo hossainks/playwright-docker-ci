@@ -1,53 +1,36 @@
 import { test, expect } from '@playwright/test';
-import { Navigation } from '../../page-objects/navigation.js';
+import { HomePage } from '../../page-objects/homepage';
 
 test.beforeEach(async ({ page }) => {
     // Navigate to the base URL before each test
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 });
 
-test.only('Verify Smart Devices Status', async ({ page }) => {
-    const lightCards = page.locator('nb-card', { hasText: 'Light' });
-    let status = lightCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await lightCards.click()
-    status = lightCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('OFF');
-    await lightCards.click()
-    status = lightCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await page.waitForTimeout(2000);
+test('Verify Smart Devices Status', async ({ page }) => {
+    const homePage = new HomePage(page);
+    await homePage.toggleAndVerifyStatus('Light');
+    await homePage.toggleAndVerifyStatus('Roller Shades');
+    await homePage.toggleAndVerifyStatus('Wireless Audio');
+    await homePage.toggleAndVerifyStatus('Coffee Maker');
+});
 
-    const rolarShadesCards = page.locator('nb-card', { hasText: 'Roller Shades' });
-    status = rolarShadesCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await rolarShadesCards.click()
-    status = rolarShadesCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('OFF');
-    await rolarShadesCards.click()
-    status = rolarShadesCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await page.waitForTimeout(2000);
+test('Verify Tempareture and Humidity', async ({ page }) => {
+    const homePage = new HomePage(page);
+    await homePage.verifyInitialState();
+    await homePage.togglePower();
+    await homePage.adjustTempature([
+        { offsetX: 13, offsetY: 175, expectedTemp: '30' },
+        { offsetX: -90, offsetY: -38, expectedTemp: '21' },
+        { offsetX: -222, offsetY: 86, expectedTemp: '15' }, 
+    ])
+    await homePage.verifyUnit('Celsius');
+});
 
-    const wirelessAudioCards = page.locator('nb-card', { hasText: 'Wireless Audio' });
-    status = wirelessAudioCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await wirelessAudioCards.click()
-    status = wirelessAudioCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('OFF');
-    await wirelessAudioCards.click()
-    status = wirelessAudioCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await page.waitForTimeout(2000);
-
-    const coffeeMakerCards = page.locator('nb-card', { hasText: 'Coffee Maker' });
-    status = coffeeMakerCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await coffeeMakerCards.click()
-    status = coffeeMakerCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('OFF');
-    await coffeeMakerCards.click()
-    status = coffeeMakerCards.locator('.status.paragraph-2');
-    await expect(status).toHaveText('ON');
-    await page.waitForTimeout(2000);
+test('Verify Room Management', async ({ page }) => {
+    const homePage = new HomePage(page);
+    await homePage.verifySelectedRoom('Living Room');
+    await homePage.selectRoom('Bedroom');
+    await homePage.selectRoom('Kitchen');
+    await homePage.selectRoom('Living Room');
+    await homePage.selectRoom('Hallway');
 });
