@@ -1,0 +1,4 @@
+{
+  "calendarDate": "[ng-reflect-view-mode='date'] [nbbutton]",
+  "nextButton": "button[class*='next-month']"
+}
