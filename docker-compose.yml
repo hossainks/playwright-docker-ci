@@ -1,0 +1,11 @@
+services:
+  angular-app:
+    build: .
+    container_name: angular-app
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: sh -c "npm run start -- --host 0.0.0.0 --disable-host-check"
+    restart: unless-stopped
