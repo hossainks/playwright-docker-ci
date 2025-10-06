@@ -1,8 +1,6 @@
 
 # 🎭 Playwright Docker CI
 
-[![CI](https://github.com/your-username/playwright-docker-ci/actions/workflows/playwright.yml/badge.svg)](https://github.com/your-username/playwright-docker-ci/actions/workflows/playwright.yml)
-
 ## 🚀 Project Overview
 
 **playwright-docker-ci** is a robust **end-to-end (E2E) testing framework** built with **Playwright**, designed for modern web applications. It leverages **Docker** for consistent, containerized test environments and integrates seamlessly with **CI/CD pipelines** (GitHub Actions).  
@@ -168,6 +166,6 @@ Tests run automatically on **GitHub Actions** for:
 
 ## 📌 Conclusion
 
-This project demonstrates **SDET-level expertise** in designing **robust, maintainable, and CI-ready E2E frameworks**. It reflects **modern testing best practices** including containerization, parallel execution, and actionable reporting, making it an ideal showcase for interviews or recruitment discussions.
+This project demonstrates **SDET-level expertise** in designing **robust, maintainable, and CI-ready E2E frameworks**. It reflects **modern testing best practices** including containerization, parallel execution, and actionable reporting.
 
 ---
