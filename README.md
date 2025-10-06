@@ -30,14 +30,14 @@ Key capabilities include:
 
 ## 🛠 Tech Stack
 
-| Layer               | Tools & Frameworks                                      |
+| Layer               | Tools & Frameworks                                    |
 |--------------------|--------------------------------------------------------|
-| Test Automation     | Playwright, TypeScript                                 |
-| Containerization    | Docker, Docker Compose                                 |
+| Test Automation     | Playwright, TypeScript                                |
+| Containerization    | Docker, Docker Compose                                |
 | CI/CD               | GitHub Actions                                        |
 | Frontend            | Angular                                               |
 | Reporting           | Playwright HTML Reporter, JUnit (test-results XML)    |
-| Utilities           | Node.js, npm, wait-port                                 |
+| Utilities           | Node.js, npm, wait-port                               |
 
 ---
 
@@ -80,20 +80,20 @@ playwright-docker-ci/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/playwright-docker-ci.git
+git clone https://github.com/hossainks/playwright-docker-ci.git
 cd playwright-docker-ci
 ```
 
 ### 2️⃣ Install Dependencies
 
 ```bash
-npm ci --legacy-peer-deps
+npm install --force
 ```
 
 ### 3️⃣ Install Playwright Browsers
 
 ```bash
-npx playwright install --with-deps
+npx playwright install
 ```
 
 ### 4️⃣ Run Tests Locally
@@ -106,11 +106,10 @@ npm start
 npx playwright test
 ```
 
-### 5️⃣ Run Tests in Docker
+### 5️⃣ Run Tests using Docker
 
 ```bash
 docker compose up -d --build
-npx wait-port http://localhost:4200 -t 120000
 npx playwright test
 docker compose down
 ```
